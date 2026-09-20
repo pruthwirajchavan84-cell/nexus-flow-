@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeuralFlow AI | Intelligence Accelerated</title>
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050509;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ================================
+           BACKGROUND
+        ================================= */
+
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+            animation: floatOrb 10s infinite alternate ease-in-out;
+        }
+
+        .orb1 {
+            background: #6c3cff;
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb2 {
+            background: #0077ff;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatOrb {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(100px, 80px);
+            }
+        }
+
+        /* ================================
+           NAVBAR
+        ================================= */
+
+        nav {
+            width: 90%;
+            max-width: 1200px;
+
+            position: fixed;
+            top: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 25px;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(15px);
+
+            border-radius: 20px;
+
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+
+            border-radius: 10px;
+
+            border: none;
+
+            background: linear-gradient(
+                135deg,
+                #6c3cff,
+                #0077ff
+            );
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 120px 8% 60px;
+
+            gap: 60px;
+
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .badge {
+
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            background: rgba(139, 92, 246, 0.15);
+
+            border: 1px solid rgba(139, 92, 246, 0.4);
+
+            color: #b99cff;
+
+            margin-bottom: 25px;
+
+            font-size: 14px;
+        }
+
+        .hero h1 {
+
+            font-size: clamp(45px, 6vw, 85px);
+
+            line-height: 1.05;
+
+            margin-bottom: 25px;
+
+        }
+
+        .gradient-text {
+
+            background: linear-gradient(
+                90deg,
+                #8b5cf6,
+                #00c6ff
+            );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .hero p {
+
+            color: #a0a0a0;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+
+        }
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .primary-btn {
+
+            padding: 15px 25px;
+
+            border-radius: 12px;
+
+            border: none;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #2563eb
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+        .primary-btn:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 40px
+                rgba(124, 58, 237, 0.4);
+
+        }
+
+        .secondary-btn {
+
+            padding: 15px 25px;
+
+            border-radius: 12px;
+
+            border: 1px solid #333;
+
+            background: transparent;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+        .secondary-btn:hover {
+
+            background: rgba(255,255,255,0.05);
+
+        }
+
+        /* ================================
+           AI CORE
+        ================================= */
+
+        .ai-visual {
+
+            position: relative;
+
+            width: 400px;
+
+            height: 400px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .ai-core {
+
+            width: 220px;
+
+            height: 220px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #8b5cf6,
+                    #312e81,
+                    #050509
+                );
+
+            box-shadow:
+
+                0 0 50px #6c3cff,
+                0 0 100px rgba(108,60,255,0.5);
+
+            animation:
+
+                rotateCore 8s linear infinite,
+                pulse 3s infinite alternate;
+
+        }
+
+        @keyframes rotateCore {
+
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        @keyframes pulse {
+
+            0% {
+                box-shadow:
+                    0 0 40px #6c3cff;
+            }
+
+            100% {
+                box-shadow:
+                    0 0 100px #0077ff;
+            }
+
+        }
+
+        .ring {
+
+            position: absolute;
+
+            border: 1px solid rgba(139,92,246,0.4);
+
+            border-radius: 50%;
+
+            animation: rotateRing 10s linear infinite;
+
+        }
+
+        .ring1 {
+
+            width: 320px;
+
+            height: 320px;
+
+        }
+
+        .ring2 {
+
+            width: 380px;
+
+            height: 380px;
+
+            animation-direction: reverse;
+
+        }
+
+        @keyframes rotateRing {
+
+            100% {
+
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+        .floating-card {
+
+            position: absolute;
+
+            padding: 15px;
+
+            background: rgba(255,255,255,0.08);
+
+            border:
+
+                1px solid
+                rgba(255,255,255,0.1);
+
+            backdrop-filter: blur(15px);
+
+            border-radius: 15px;
+
+            font-size: 13px;
+
+        }
+
+        .card1 {
+
+            top: 10px;
+
+            right: -20px;
+
+        }
+
+        .card2 {
+
+            bottom: 20px;
+
+            left: -30px;
+
+        }
+
+        /* ================================
+           FEATURES
+        ================================= */
+
+        .section {
+
+            padding: 100px 8%;
+
+        }
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 60px;
+
+        }
+
+        .section-title h2 {
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+
+        }
+
+        .section-title p {
+
+            color: #999;
+
+        }
+
+        .features-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,
+                minmax(250px,1fr));
+
+            gap: 25px;
+
+        }
+
+        .feature-card {
+
+            padding: 30px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
+            transition: 0.4s;
+
+        }
+
+        .feature-card:hover {
+
+            transform:
+                translateY(-10px);
+
+            border-color:
+                #7c3aed;
+
+            box-shadow:
+                0 20px 50px
+                rgba(124,58,237,0.15);
+
+        }
+
+        .feature-icon {
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+
+        }
+
+        .feature-card h3 {
+
+            margin-bottom: 15px;
+
+        }
+
+        .feature-card p {
+
+            color: #999;
+
+            line-height: 1.6;
+
+        }
+
+        /* ================================
+           DASHBOARD
+        ================================= */
+
+        .dashboard {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 30px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,0.05);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+        }
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                220px 1fr;
+
+            gap: 25px;
+
+        }
+
+        .sidebar {
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,0.3);
+
+            border-radius: 15px;
+
+        }
+
+        .sidebar p {
+
+            padding: 12px;
+
+            color: #aaa;
+
+        }
+
+        .sidebar p:hover {
+
+            background:
+                rgba(139,92,246,0.2);
+
+            border-radius: 8px;
+
+            color: white;
+
+        }
+
+        .dashboard-content {
+
+            display: grid;
+
+            gap: 20px;
+
+        }
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 15px;
+
+        }
+
+        .stat {
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.05);
+
+        }
+
+        .stat h3 {
+
+            font-size: 25px;
+
+            color: #a78bfa;
+
+        }
+
+        .chart {
+
+            height: 220px;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.2),
+                    rgba(0,119,255,0.1)
+                );
+
+            display: flex;
+
+            align-items: end;
+
+            gap: 10px;
+
+        }
+
+        .bar {
+
+            width: 12%;
+
+            background:
+                linear-gradient(
+                    to top,
+                    #7c3aed,
+                    #00c6ff
+                );
+
+            border-radius: 8px 8px 0 0;
+
+            animation:
+                grow 2s ease forwards;
+
+        }
+
+        @keyframes grow {
+
+            from {
+                height: 0;
+            }
+
+        }
+
+        /* ================================
+           PRICING
+        ================================= */
+
+        .pricing {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,
+                minmax(250px,1fr));
+
+            gap: 25px;
+
+            max-width: 1000px;
+
+            margin: auto;
+
+        }
+
+        .price-card {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+        }
+
+        .popular {
+
+            border-color: #7c3aed;
+
+            transform: scale(1.05);
+
+        }
+
+        .price {
+
+            font-size: 40px;
+
+            margin: 20px 0;
+
+        }
+
+        .price-card ul {
+
+            list-style: none;
+
+            margin-bottom: 25px;
+
+        }
+
+        .price-card ul li {
+
+            padding: 8px 0;
+
+            color: #aaa;
+
+        }
+
+        /* ================================
+           CTA
+        ================================= */
+
+        .cta {
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+        }
+
+        .cta h2 {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
+        }
+
+        .cta p {
+
+            color: #aaa;
+
+            margin-bottom: 30px;
+
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            color: #777;
+
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+            .hero-buttons {
+
+                justify-content: center;
+
+            }
+
+            nav ul {
+
+                display: none;
+
+            }
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .sidebar {
+
+                display: none;
+
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .ai-visual {
+
+                transform: scale(0.8);
+
+            }
+
+            .stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .popular {
+
+                transform: none;
+
+            }
+
+            .cta h2 {
+
+                font-size: 40px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="orb orb1"></div>
+
+    <div class="orb orb2"></div>
+
+</div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+
+        NeuralFlow<span>AI</span>
+
+    </div>
+
+    <ul>
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#features">Features</a></li>
+
+        <li><a href="#dashboard">Dashboard</a></li>
+
+        <li><a href="#pricing">Pricing</a></li>
+
+    </ul>
+
+    <button class="nav-button">
+
+        Get Started
+
+    </button>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+
+            ✨ Next Generation Artificial Intelligence
+
+        </div>
+
+        <h1>
+
+            Build What You
+
+            <span class="gradient-text">
+
+                Imagine.
+
+            </span>
+
+        </h1>
+
+        <p>
+
+            NeuralFlow AI combines artificial intelligence,
+            automation and creativity into one powerful
+            workspace.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn">
+
+                Start Creating →
+
+            </button>
+
+            <button class="secondary-btn">
+
+                Explore AI
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI CORE -->
+
+    <div class="ai-visual">
+
+        <div class="ring ring1"></div>
+
+        <div class="ring ring2"></div>
+
+        <div class="ai-core"></div>
+
+        <div class="floating-card card1">
+
+            🧠 AI Processing
+            <br>
+            <b>98.9%</b>
+
+        </div>
+
+        <div class="floating-card card2">
+
+            ⚡ System Status
+            <br>
+            <b>ONLINE</b>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section" id="features">
+
+    <div class="section-title">
+
+        <h2>
+
+            One Intelligence.
+
+            <span class="gradient-text">
+
+                Infinite Possibilities.
+
+            </span>
+
+        </h2>
+
+        <p>
+
+            Powerful AI tools designed for creators,
+            developers and innovators.
+
+        </p>
+
+    </div>
+
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                🤖
+
+            </div>
+
+            <h3>
+
+                AI Assistant
+
+            </h3>
+
+            <p>
+
+                Ask questions, research ideas and solve
+                complex problems instantly.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                💻
+
+            </div>
+
+            <h3>
+
+                Code Generation
+
+            </h3>
+
+            <p>
+
+                Transform your ideas into clean,
+                production-ready code.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                📊
+
+            </div>
+
+            <h3>
+
+                Data Intelligence
+
+            </h3>
+
+            <p>
+
+                Analyze data and discover meaningful
+                insights using artificial intelligence.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                ⚡
+
+            </div>
+
+            <h3>
+
+                Automation
+
+            </h3>
+
+            <p>
+
+                Automate repetitive workflows and focus
+                on important work.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="section" id="dashboard">
+
+    <div class="section-title">
+
+        <h2>
+
+            Your AI
+
+            <span class="gradient-text">
+
+                Command Center.
+
+            </span>
+
+        </h2>
+
+    </div>
+
+
+    <div class="dashboard">
+
+        <div class="dashboard-grid">
+
+
+            <div class="sidebar">
+
+                <p>🏠 Dashboard</p>
+
+                <p>🤖 AI Assistant</p>
+
+                <p>📁 Projects</p>
+
+                <p>📊 Analytics</p>
+
+                <p>⚡ Automation</p>
+
+                <p>⚙ Settings</p>
+
+            </div>
+
+
+            <div class="dashboard-content">
+
+                <h2>
+
+                    Good Evening 👋
+
+                </h2>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+
+                        <p>AI Requests</p>
+
+                        <h3>24,820</h3>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <p>Projects</p>
+
+                        <h3>48</h3>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <p>Automation</p>
+
+                        <h3>94%</h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="bar" style="height:40%"></div>
+
+                    <div class="bar" style="height:70%"></div>
+
+                    <div class="bar" style="height:50%"></div>
+
+                    <div class="bar" style="height:90%"></div>
+
+                    <div class="bar" style="height:65%"></div>
+
+                    <div class="bar" style="height:100%"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICING -->
+
+<section class="section" id="pricing">
+
+    <div class="section-title">
+
+        <h2>
+
+            Simple
+
+            <span class="gradient-text">
+
+                Pricing.
+
+            </span>
+
+        </h2>
+
+    </div>
+
+
+    <div class="pricing">
+
+
+        <div class="price-card">
+
+            <h2>Free</h2>
+
+            <div class="price">
+
+                ₹0
+
+            </div>
+
+            <ul>
+
+                <li>✓ AI Assistant</li>
+
+                <li>✓ Basic Projects</li>
+
+                <li>✓ Community Support</li>
+
+            </ul>
+
+            <button class="secondary-btn">
+
+                Get Started
+
+            </button>
+
+        </div>
+
+
+        <div class="price-card popular">
+
+            <h2>Pro 🚀</h2>
+
+            <div class="price">
+
+                ₹999
+
+            </div>
+
+            <ul>
+
+                <li>✓ Unlimited AI Requests</li>
+
+                <li>✓ Advanced Analytics</li>
+
+                <li>✓ AI Automation</li>
+
+                <li>✓ Priority Support</li>
+
+            </ul>
+
+            <button class="primary-btn">
+
+                Start Pro
+
+            </button>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h2>Enterprise</h2>
+
+            <div class="price">
+
+                Custom
+
+            </div>
+
+            <ul>
+
+                <li>✓ Custom AI Models</li>
+
+                <li>✓ Team Workspace</li>
+
+                <li>✓ Enterprise Security</li>
+
+            </ul>
+
+            <button class="secondary-btn">
+
+                Contact Us
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <h2>
+
+        The Future Starts
+
+        <span class="gradient-text">
+
+            With An Idea.
+
+        </span>
+
+    </h2>
+
+    <p>
+
+        Turn your imagination into reality with NeuralFlow AI.
+
+    </p>
+
+    <button class="primary-btn">
+
+        Start Building For Free →
+
+    </button>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 NeuralFlow AI — Built for the Future 🚀
+
+</footer>
+
+
+<script>
+
+    /* ================================
+       MOUSE INTERACTION
+    ================================= */
+
+    const aiCore = document.querySelector(".ai-core");
+
+    document.addEventListener("mousemove", (event) => {
+
+        const x =
+            (event.clientX / window.innerWidth - 0.5) * 20;
+
+        const y =
+            (event.clientY / window.innerHeight - 0.5) * 20;
+
+        aiCore.style.transform =
+            `rotateX(${y}deg) rotateY(${x}deg)`;
+
+    });
+
+
+    /* ================================
+       SCROLL ANIMATION
+    ================================= */
+
+    const cards =
+        document.querySelectorAll(".feature-card");
+
+    window.addEventListener("scroll", () => {
+
+        cards.forEach(card => {
+
+            const position =
+                card.getBoundingClientRect().top;
+
+            if (position < window.innerHeight - 100) {
+
+                card.style.opacity = "1";
+
+                card.style.transform =
+                    "translateY(0)";
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
